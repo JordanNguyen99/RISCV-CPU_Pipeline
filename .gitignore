@@ -1,0 +1,57 @@
+
+---
+
+# 📄 `.gitignore`
+
+```gitignore
+# Vivado / Quartus / FPGA tool junk
+*.jou
+*.log
+*.str
+*.wdb
+*.pb
+*.dcp
+*.xml
+*.xpr
+*.xsa
+*.bit
+*.bin
+*.mif
+*.html
+*.csv
+
+# Vivado auto dirs
+.cache/
+.hw/
+.ip_user_files/
+.runs/
+.sim/
+.sdk/
+
+# Quartus auto dirs
+db/
+incremental_db/
+output_files/
+rtl_work/
+
+# ModelSim
+vsim.wlf
+transcript
+work/
+*.vcd
+*.vvp
+*.fst
+*.ghw
+
+# Build binaries
+bin/
+*.exe
+*.out
+
+# Editor / IDE
+.vscode/
+*.code-workspace
+
+# System
+.DS_Store
+Thumbs.db
