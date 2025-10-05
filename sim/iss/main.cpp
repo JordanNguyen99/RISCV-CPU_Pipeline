@@ -5,28 +5,28 @@
 #include <thread>
 #include <chrono>
 
-int registers[32] ={0};
-int memory[1024] = {0}; // Simulate 1KB memory (adjust as needed)
-bool skip_print = false;
-bool enable_delay = false;
+int registers[32] = {0};
+int memory[1024]   = {0};
+bool skip_print    = false;
+bool enable_delay  = false;
 
-
-std::string commaclean(const std::string& str) { // pass by reference
-    if (!str.empty() && str.back() == ',') {
-        return str.substr(0, str.size() - 1);
-    }
-    return str;
+std::string commaclean(const std::string& s) {
+    return (!s.empty() && s.back() == ',') ? s.substr(0, s.size() - 1) : s;
 }
 
-int main() {
+int main(int argc, char** argv) {
     int cycle = 1;
     int last_written = -1;
-    std::cout << "\nRISC-V Instruction-Level Simulator Starting..." << std::endl;
-    std::cout << "_______________________" << std::endl;
-    
-    std::ifstream infile("../testbench/program.txt"); //finder
+
+    std::cout << "\nRISC-V Instruction-Level Simulator Starting...\n"
+              << "_______________________\n";
+
+    std::string program_path = "sim/test_programs/program.txt";
+    if (argc > 1 && argv[1]) program_path = argv[1];
+
+    std::ifstream infile(program_path);
     if (!infile) {
-        std::cerr << "Failed to open instruction file ../testbench/program.txt" << std::endl; // error
+        std::cerr << "Failed to open instruction file " << program_path << "\n";
         return 1;
     }
 
